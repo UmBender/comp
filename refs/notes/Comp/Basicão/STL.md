@@ -121,7 +121,7 @@ Podemos utilizar a função *resize* para alterar o tamanho do *vector*, se for 
 ### Exemplo 12
 ```cpp
 int main() {
-	vector<int> arr();
+	vector<int> arr;
 	if(arr.empty()){
 		cout << "arr está vazio" << endl;
 	}else{
@@ -130,6 +130,50 @@ int main() {
 }
 ```
 Podemos utilizar a função *empty*, para saber o *vector* está vazio ou não.
+### Exemplo 13
+```cpp
+int main() {
+	vector<int> arr1 = {1, 3};
+	arr1.insert(arr1.begin() + 1, 2);
+	for(auto i: arr1) {
+		cout << i << endl;
+	}
+	return 0;
+}
+```
+Podemos utilizar a função *insert*, para inserir um valor no *vector* em uma dada posição. Para utilizar a função é necessário pegar um iterador do *vector* para a referência onde será feita a inserção, da forma apresentada acima utiliza o início do *vector*, posição `0`, e desloca um para o lado assim inserindo na posição `1` o valor `2`. Está operação desloca todos os valores para esquerda em uma posição, por isso ela tem complexidade $O(n)$, então deve ser evitada.
+
+### Exemplo 14
+```cpp
+int main() {
+	vector<int> arr1 = {1, 2, 3};
+	vecotr<int> arr2 = {3, 4, 5, 6}
+	arr1.insert(arr1.begin() +3 , arr2.begin()+1, arr2.end());
+	for(auto i: arr1) {
+		cout << i << endl;
+	}
+	return 0;
+}
+```
+Podemos utilizar a função *insert*, para inserir um intervalo ou uma outra coleção inteira em um *vector* dada posição. Para utilizar a função é necessário pegar um iterador do *vector* para a referência onde será feita a inserção, da mesma forma como no caso anterior, porém nesse caso estamos inserindo na posição `3`, agora dada o iterador de outra coleção, pegamos a posição inicial do iterador, no exemplo é segundo elemento pois desloca a início para direta em uma posição, até o final *vector*. Da mesma forma, que no caso anterior esta inserção tem complexidade de $O(n + m)$, já que terá que deslocar todos os elementos para direita no tamanho do conjunto de elementos que estão sendo inseridos, que estamos representando pela letra $m$.
+### Exemplo 15
+```cpp
+int main() {
+	vector<int> arr = {1, 3, 4, 5, 6, 7, 1, 4, 5};
+	arr.erase(arr.begin() + 3);
+}
+```
+Podemos utilizar a função *erase*, para remover um certo elemento do *vector*. Para remover deve ser passado o iterador para a posição que a remoção é desejada, no exemplo é o iterador do início movido em `3` posições para esquerda. Essa função tem complexidade $O(n)$, pois a coleção deve ser toda movida uma posição para esquerda, então se deve utilizar esta função com certa cautela.
+### Exemplo 16
+```cpp
+int main() {
+	vector<int> arr = {1, 3, 4, 5, 6, 7, 1, 4, 5};
+	arr.erase(arr.begin() + 3,arr.end() - 2);
+}
+```
+Podemos utilizar a função *erase*, para remover um intervalo do *vector*. Para remover deve ser passado o iterador do início e final do intervalo que será removido, no exemplo é o iterador do início movido em `3` posições para direita e o do final é movido em `2` unidades para esquerda. Essa função tem complexidade $O(n-m)$, pois tem que remover toda a coleção depois de certa posição para esquerda em $m$ unidades.
+
+
 ## Map
 *Maps* são estruturas de dados que guardam dados formados por uma combinação de uma chve, *key value* e um valor mapeado, *mapped value*, seguindo uma ordem específica.
 Em um *map*, as chaves são geralmente usadas para ordenar e como identificador único os elementos, enquanto os valores mapeados são o conteúdo armazenado associado para esta chave. Os tipos da chave e do valor podem ser diferentes, e são unidos como um *value_type*, o qual é o tipo *pair* combinando ambos.
