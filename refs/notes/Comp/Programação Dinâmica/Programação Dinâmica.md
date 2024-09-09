@@ -11,6 +11,22 @@ Ela pode ser aplicada em problemas onde há a possibilidade da divisão do probl
 
 ## Estudo de caso
 
-> [[Problema da Moeda]]
+- [x] [[Problema da Moeda]]
+- [x] [[Maior subsequência crescente]]
+- [x] [[Caminhos em um Grid]]
+- [ ] [[Problema da Mochila(Knapsack)]]
+- [ ] [[Distância de alteração]]
+- [ ] [[Contagem de peças]]
+
+
+
+
+
+
+
+
+
+
+
 
 
