@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programação Dinâmica/Programação Dinâmica.md",
+                "file": "COMP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0048caae948dcd79",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Questões.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2cfdd5cf10000395",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programação Dinâmica/Maior subsequência crescente.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Programação Dinâmica/Programação Dinâmica.md",
+                "file": "Programação Dinâmica/Maior subsequência crescente.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Programação Dinâmica/Programação Dinâmica.md",
+                "file": "Programação Dinâmica/Maior subsequência crescente.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programação Dinâmica/Programação Dinâmica.md"
+                "file": "Programação Dinâmica/Maior subsequência crescente.md"
               }
             }
           }
@@ -146,12 +171,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "343b6184873667f7",
+  "active": "2cfdd5cf10000395",
   "lastOpenFiles": [
+    "Programação Dinâmica/Problema da Mochila(Knapsack).md",
     "Programação Dinâmica/Problema da Moeda.md",
+    "100 days of code/1-10/Dia 2 & Dia 3.md",
+    "100 days of code/1-10/Dia 1.md",
+    "Programação Dinâmica/Distância de alteração.md",
+    "Programação Dinâmica/Maior subsequência crescente.md",
     "Programação Dinâmica/Programação Dinâmica.md",
-    "Basicão/STL.md",
+    "100 days of code/100 Days of Code.md",
+    "100 days of code/1-10",
+    "Questões.md",
+    "100 days of code",
+    "Programação Dinâmica/Contagem de peças.md",
+    "Programação Dinâmica/Caminhos em um Grid.md",
     "COMP.md",
+    "Debugging/GNU Debugger.md",
+    "Debugging/Debugging(Depuração).md",
+    "Debugging",
+    "Basicão/STL.md",
     "Contests/div 4/2024-07-18.md",
     "Contests/Contests.md",
     "Basicão/Programa de Estudos.md",

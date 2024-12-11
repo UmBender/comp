@@ -1,7 +1,7 @@
 Esse será o programa de estudos sugestionado.
 
 ### Pré-requisitos para Computação Competitiva
-- [ ] Complexidade de espaço e memória.
+- [x] Complexidade de espaço e memória.
 - [ ] *Arrays*, matrizes, recursão, *hashing*, *string*, busca e ordenação.
 - [ ] Pilha, Fila, Fila dupla(*dequeue*), árvore, BST, *heap*, grafos, algoritmos gulosos e *backtracking*.
 - [ ] Programação Dinâmica, *Trie*, arvores binárias de segmentos e de index(*BST* e *BIT*), *Disjoint Set Union*(*DSU*).

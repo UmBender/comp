@@ -4,6 +4,7 @@ Esse será meu *vault* especificamente para computação competitiva.
 Anotações sobre conceitos básicos extremamente úteis.
 * [[Complexidade]] 
 * [[Algoritmos básicos]]
+* [[Debugging(Depuração)]]
 
 ## Grafos
 Anotações sobre algoritmos e estruturas orientadas a grafos.

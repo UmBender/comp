@@ -40,5 +40,3 @@ public:
     return i == j;
   }
 };
-
-

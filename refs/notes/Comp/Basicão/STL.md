@@ -1,6 +1,6 @@
 Algumas anotações sobre a *standard template library* da linguagem C++, para facilitar a implementação de certos algoritmos.
 
-
+# Contêineres
 ## Vector
 O *vector* é basicamente a uma implementação de array genérico, só que com tamanho variável. Ou seja é uma coleção de dados contíguos genéricos que podem crescer com o passar do programa. 
 Desta forma é mais simples de lidar com array sem ter o problema de ficar manejando memória na mão.
@@ -282,7 +282,7 @@ int main() {
 	return 0;
 }
 ```
-# Unordered Map
+## Unordered Map
 TODO
 ## Set
 TODO
@@ -297,7 +297,7 @@ TODO
 TODO
 
 ## Stack
-TODO
+Este contêiner não se mostra útil para computação competitiva, pois todas as suas *features* estão presentas no *Vector*, então em um contexto de computação competitiva, utilize apenas o *Vector*  com os métodos *push_back*, *pop_back*, *back* e *empty*, para inserir no topo da pilha, remover, ler o que tem no topo da pilha e checar se a pilha está vazia.
 
 ## Queue
 TODO
