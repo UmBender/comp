@@ -1,8 +1,9 @@
 {
-  "cssTheme": "Obsidian Nord",
+  "cssTheme": "Obsidianotion",
   "textFontFamily": "Fira Code",
   "theme": "obsidian",
   "nativeMenus": false,
   "monospaceFontFamily": "Fira Code",
-  "baseFontSize": 19
+  "baseFontSize": 16,
+  "accentColor": "#d7af87"
 }
