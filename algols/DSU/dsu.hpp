@@ -1,42 +1,50 @@
 #pragma once
 #include <map>
+#include <numeric>
 #include <vector>
 
-struct dsu {
+struct DSU {
 private:
-  std::vector<int> Parent;
-  std::vector<int> size_set;
+  std::vector<int> parent;
+  std::vector<int> sizes;
 
 public:
-  dsu(int size) : Parent(size), size_set(size, 1) {
-    for (int i = 0; i < size; i++) {
-      Parent[i] = i;
-    }
+  DSU(int size) : parent(size + 1), sizes(size + 1, 1) {
+    std::iota(parent.begin(), parent.end(), 0);
   }
-  int size() { return Parent.size(); }
+
+  inline int size() { return parent.size() - 1; }
 
   int find_parent(int i) {
-    if (i == Parent[i]) {
+    if (i == parent[i]) {
       return i;
     }
-    Parent[i] = find_parent(i);
 
-    return Parent[i];
+    parent[i] = find_parent(parent[i]);
+
+    return parent[i];
   }
 
   void join(int i, int j) {
     i = find_parent(i);
     j = find_parent(j);
-    if (size_set[i] < size_set[j]) {
-      Parent[i] = j;
-    } else {
-      Parent[j] = i;
-    }
+
+    if (i == j)
+      return;
+    if (sizes[i] < sizes[j])
+      std::swap(i, j);
+
+    sizes[i] += sizes[j];
+    parent[j] = i;
   }
 
   bool same(int i, int j) {
     i = find_parent(i);
     j = find_parent(j);
     return i == j;
+  }
+
+  int get_size(int set){
+    return sizes[find_parent(set)];
   }
 };
