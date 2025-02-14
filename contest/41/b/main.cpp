@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+#include <numeric>
+
+using namespace std;
+
+#define endl '\n'
+
+#define MAX_INT ((int64_t)1E18 + 1000)
+#define makefn(fn) [](auto... args) { return fn(args...); }
+using ll = long long;
+#define int ll
+
+void solution() {
+  int n;
+  cin >> n;
+  vector<int> a(n);
+  int sum1=0, sum2=0;
+  vector<int> a1;
+  vector<int> a2;
+  int sum = 0;
+  for (auto &i : a) {
+    cin >> i;
+    sum += i;
+  }
+  for (int i = 0; i < n; i++) {
+    if (i & 1) {
+      a2.push_back(a[i]);
+    } else {
+      a1.push_back(a[i]);
+    }
+  }
+  sum1 = reduce(a1.begin(), a1.end());
+  sum2 = reduce(a2.begin(), a2.end());
+  if(sum1 / a1.size() == sum2 / a2.size() && sum1 % a1.size() ==0 && sum2 % a2.size() == 0){
+    cout << "YES" << endl;
+  }else{
+    cout << "NO" << endl;
+  }
+}
+
+int32_t main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr), cout.tie(nullptr);
+  int t;
+  cin >> t;
+  while (t--)
+    solution();
+
+  return 0;
+}
