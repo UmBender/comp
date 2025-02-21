@@ -1,13 +1,14 @@
 CC = g++
-CFLAGS = -std=c++20 -lm 
-CFLAGS_DEBUG = -std=c++20 -Og -g -pedantic -Wall -Werror
+CFLAGS = -std=c++20 -lm  -I.
+CFLAGS_DEBUG = -std=c++20 -Og -g -pedantic -Wall -Werror -I.
 
 # Target executable
 TARGET = m
 TARGET_DEBUG = m-debug
 
 # Source files
-SRCS = main.cpp 
+#SRCS = main.cpp 
+SRCS = combined.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

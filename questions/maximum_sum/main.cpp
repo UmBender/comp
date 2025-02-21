@@ -1,57 +1,68 @@
+#include <atcoder/all>
 #include <bits/stdc++.h>
 
 using namespace std;
 
+#define endl '\n'
+
+#define MAX_INT ((int64_t)1E18 + 1000)
+#define makefn(fn) [](auto... args) { return fn(args...); }
 using ll = long long;
 #define int ll
-#define endl (char)10
+using mint = atcoder::modint;
+#define MOD (int)1e9 + 7
 
-void __dbg() { cerr << endl; }
-template <typename T> void __dbg(T t) { cerr << t << endl; }
-template <typename T, typename... TRest> void __dbg(T first, TRest... rest) {
-  cerr << first << ", ";
-  __dbg(rest...);
-}
-#define dbg(...)                                                               \
-  do {                                                                         \
-    cerr << "DBG> " << "(" << #__VA_ARGS__ << ") = ";                          \
-    __dbg(__VA_ARGS__);                                                        \
-  } while (0)
-
-const int mod = 1E9 + 7;
 void solution() {
-  int n, t;
-  cin >> n >> t;
-  int all_sum{0};
-  vector<int> arr(n);
-  for (auto &i : arr) {
+  int n, k;
+  cin >> n >> k;
+  vector<int> a(n);
+  for (auto &i : a) {
     cin >> i;
   }
-  int max_val = arr[0];
-  int value = arr[0];
-  for (int i = 1; i < n; i++) {
-    value += arr[i];
-    if (value < 0) {
-      value = 0;
+  int max_count = 0;
+  int actual = 0;
+  int last_pos = 0;
+  for (int i = 0; i < n; i++) {
+    actual += a[i];
+    if (actual < 0) {
+      actual = 0;
     }
-    max_val = max(value, max_val);
+    if (actual > max_count) {
+      max_count = actual;
+      last_pos = i;
+    }
   }
-  int sum = max_val;
-  while (t--) {
-    sum += sum;
-    sum %= mod;
+  int allsum = 0;
+  for (int i = 0; i < n; i++) {
+    allsum += a[i];
   }
-  cout << sum << endl;
+  while (allsum < 0) {
+    allsum += MOD;
+  }
+
+  allsum %= MOD;
+  allsum += max_count;
+  allsum %= MOD;
+  k--;
+  while (k--) {
+    max_count *= 2;
+    max_count %= MOD;
+    allsum += max_count;
+    allsum %= MOD;
+  }
+
+  cout << allsum << endl;
+  return;
 }
 
 int32_t main() {
   ios_base::sync_with_stdio(false);
-  cin.tie(0), cout.tie(0);
+  cin.tie(nullptr), cout.tie(nullptr);
+  atcoder::modint::set_mod((int)1e9 + 7);
   int t;
   cin >> t;
-  while (t--) {
+  while (t--)
     solution();
-  }
 
   return 0;
 }
