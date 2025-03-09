@@ -1,0 +1,90 @@
+// #include <atcoder/all>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define endl '\n'
+void __dbg() { cerr << endl; }
+template <typename T> void __dbg(T t) { cerr << t << endl; }
+template <typename T, typename... TRest> void __dbg(T first, TRest... rest) {
+  cerr << first << ", ";
+  __dbg(rest...);
+}
+#define dbg(...)                                                               \
+  do {                                                                         \
+    cerr << "DBG> " << "(" << #__VA_ARGS__ << ") = ";                          \
+    __dbg(__VA_ARGS__);                                                        \
+  } while (0)
+
+#define MAX_INT ((int64_t)1E18 + 1000)
+#define makefn(fn) [](auto... args) { return fn(args...); }
+using ll = long long;
+#define int ll
+// using mint = atcoder::modint;
+
+int cube(int a) { return a * a * a; }
+
+void solution() {
+  int n;
+  cin >> n;
+  vector<pair<int, int>> alien;
+  vector<pair<int, int>> human;
+
+  for (int i = 0; i < n; i++) {
+    pair<int, int> pot;
+    cin >> pot.first;
+    char opt;
+    cin >> opt;
+    pot.second = i + 1;
+    if (opt == 'a') {
+      alien.push_back(pot);
+    } else {
+      human.push_back(pot);
+    }
+  }
+
+  vector<set<int>> adj(n+1);
+  int conn;
+
+  cin >> conn;
+  for (int i = 0; i < conn; i++) {
+    int a, b;
+    cin >> a >> b;
+    adj[a].insert(b);
+    adj[b].insert(a);
+  }
+
+  sort(alien.begin(), alien.end());
+  sort(human.begin(), human.begin());
+
+  int mmin = MAX_INT;
+  int i = 0;
+  int j = 0;
+  while (i < alien.size() && j < human.size()) {
+    mmin = min(abs(cube(human[j].first) - cube(alien[i].first)), mmin);
+    if (!adj[alien[i].second].contains(human[j].second)) {
+      mmin =
+          min(abs(cube(human[j].first - 1) - cube(alien[i].first + 1)), mmin);
+      mmin =
+          min(abs(cube(human[j].first + 1) - cube(alien[i].first - 1)), mmin);
+    } else {
+      mmin = min(abs(cube(human[j].first - 1) - cube(alien[i].first)), mmin);
+      mmin = min(abs(cube(human[j].first) - cube(alien[i].first - 1)), mmin);
+    }
+    if (alien[i] > human[j]) {
+      j++;
+    } else {
+      i++;
+    }
+  }
+  cout << mmin << endl;
+}
+
+int32_t main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr), cout.tie(nullptr);
+  // atcoder::modint::set_mod(998244353);
+  solution();
+
+  return 0;
+}
