@@ -1,0 +1,3 @@
+#! /bin/bash
+cat main.cpp | xclip - selection clipboard
+# cat main.cpp | xclip - selection clipboard
