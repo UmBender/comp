@@ -1,0 +1,73 @@
+#include <atcoder/all>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define endl '\n'
+
+#define MAX_INT ((int64_t)1E18 + 1000)
+#define makefn(fn) [](auto... args) { return fn(args...); }
+using ll = long long;
+#define int ll
+using mint = atcoder::modint;
+
+int bsl(function<int(int)> f, int target, int upper_bound) {
+  int left = 0;
+  int right = upper_bound;
+  while (left <= right) {
+    int middle = left + (right - left) / 2;
+    if (f(middle) >= target && f(middle - 1) < target) {
+      return middle;
+    }
+
+    if (f(middle) > target) {
+      right = middle - 1;
+    } else {
+      left = middle + 1;
+    }
+  }
+  return f(left);
+}
+
+int bsu(function<int(int)> f, int target, int upper_bound) {
+  int left = 0;
+  int right = upper_bound;
+  while (left <= right) {
+    int middle = left + (right - left) / 2;
+    if (f(middle) <= target && f(middle + 1) > target) {
+      return middle;
+    }
+
+    if (f(middle) <= target) {
+      left = middle + 1;
+    } else {
+      right = middle - 1;
+    }
+  }
+  return -1;
+}
+
+void solution() {
+  int k, l1, r1, l2, r2;
+  cin >> k >> l1 >> r1 >> l2 >> r2;
+  int counter = 0;
+  for (int i = k; i <= 1E9 + 10; i *= k) {
+    int lower_bound = bsl([=](int l) { return l * i; }, 0, l2);
+    int upper_bound = bsu([=](int l) { return l * i; }, 0, r2);
+    cout << "LOWER: " << lower_bound << " UPPER: " << upper_bound << endl;
+    counter += (upper_bound - lower_bound);
+  }
+  cout << counter << endl;
+}
+
+int32_t main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr), cout.tie(nullptr);
+  atcoder::modint::set_mod(998244353);
+  int t;
+  cin >> t;
+  while (t--)
+    solution();
+
+  return 0;
+}

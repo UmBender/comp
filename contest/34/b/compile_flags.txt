@@ -1,0 +1,6 @@
+-I.
+-std=c++17
+-Og
+-g
+-pedantic
+-Wall

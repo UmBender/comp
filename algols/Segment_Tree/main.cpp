@@ -1,50 +1,77 @@
 #include <bits/stdc++.h>
+#include <functional>
 
 using namespace std;
 
-struct SegmentTree {
-private:
-  vector<int> a;
-  vector<int> t;
+#define makefn(fn) [](auto... args) { return fn(args...); }
 
-public:
-  SegmentTree(vector<int> &a) : a(a), t(4 * a.size()) {
+template <typename T, auto Comp, auto Default> struct SegTree {
+  vector<T> a;
+  vector<T> tree;
+  SegTree(vector<T> &a) : a(a), tree(a.size() * 4, Default()) {
     build(1, 0, a.size() - 1);
   }
-  void build(int vertice_atual, int tl, int tr) {
+
+  void build(int64_t pos, int64_t tl, int64_t tr) {
     if (tl == tr) {
-      t[vertice_atual] = a[tl];
-    } else {
-      int tm = (tl + tr) / 2;
-      build(vertice_atual << 1, tl, tm);
-      build((vertice_atual << 1) + 1, tm + 1, tr);
-      t[vertice_atual] = t[vertice_atual << 1] + t[(vertice_atual << 1) + 1];
+      tree[pos] = a[tl];
+      return;
     }
+
+    int64_t tm = (tl + tr) / 2;
+    build(2 * pos, tl, tm);
+    build(2 * pos + 1, tm + 1, tr);
+
+    tree[pos] = Comp(tree[pos * 2], tree[pos * 2 + 1]);
   }
 
-  int querry(int l, int r) { return sum(1, 0, a.size() - 1, l, r); }
+  void update(int64_t pos, int64_t tl, int64_t tr, int64_t value_pos, T value) {
+    if (tl == tr) {
+      tree[pos] = value;
+      return;
+    }
 
-private:
-  int sum(int v, int tl, int tr, int l, int r) {
+    int64_t tm = (tl + tr) / 2;
+    if (tm <= value_pos) {
+      update(pos * 2, tl, tm, value_pos, value);
+    } else {
+      update(pos * 2 + 1, tm + 1, tr, value_pos, value);
+    }
+
+    tree[pos] = Comp(tree[pos * 2], tree[pos * 2 + 1]);
+  }
+
+  inline void update(int64_t value_pos, T value) {
+    update(1, 0, a.size() - 1, value_pos, value);
+  }
+
+  T query(int64_t pos, int64_t tl, int64_t tr, int64_t l, int64_t r) {
     if (l > r) {
-      return 0;
+      return Default();
     }
-    if (l == tl && r == tr) {
-      return t[v];
+
+    if (tl == l && tr == r) {
+      return tree[pos];
     }
-    int tm = (tl + tr) / 2;
-    int sum_left = sum(v * 2, tl, tm, l, min(r, tm));
-    int sum_right = sum(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
-    return sum_left + sum_right;
+
+    int64_t tm = (tl + tr) / 2;
+    T left = query(pos * 2, tl, tm, l, min(tm, r));
+    T right = query(pos * 2 + 1, tm + 1, tr, max(tm + 1, l), r);
+
+    return Comp(left, right);
+  }
+
+  inline T query(int64_t l, int64_t r) {
+    return query(1, 0, a.size() - 1, l, r);
   }
 };
 
 int32_t main() {
   ios_base::sync_with_stdio(false);
   cin.tie(0), cout.tie(0);
-  vector<int> elements = {1, 2, 3, 4, 5, 6, 7, 8};
-  auto a = SegmentTree(elements);
-  cout << a.querry(0, 7) << endl;
+  vector<int64_t> elements = {1, 2, 3, 4, 5, 6, 7, 8};
+  auto a = SegTree<int64_t, makefn(max), []() { return 0; }>(elements);
+  cout << a.query(0, 7) << endl;
 
   cout << endl;
 
