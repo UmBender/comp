@@ -1,0 +1,66 @@
+// clang-format off
+//#include <atcoder/all>
+#include <bits/stdc++.h>
+using namespace std;
+#define endl '\n'
+void __dbg() { cerr << endl; }
+template <typename T> void __dbg(T t) { cerr << t << endl; }
+template <typename T, typename... TRest> void __dbg(T first, TRest... rest) {
+  cerr << first << ", ";
+  __dbg(rest...);
+}
+#define dbg(...)                                                               \
+  do {                                                                         \
+    cerr << "DBG> " << "(" << #__VA_ARGS__ << ") = ";                          \
+    __dbg(__VA_ARGS__);                                                        \
+  } while (0)
+#define MAX_INT ((int64_t)1E18 + 1000)
+#define makefn(fn) [](auto... args) { return fn(args...); }
+using ll = long long;
+using ld = long double;
+#define int ll
+//using mint = atcoder::modint;
+// clang-format on
+
+void solution() {
+	int n;
+	cin >> n;
+	vector<int> a(n);
+	vector<int> ac;
+	for (auto &i : a) { cin >> i; }
+	ac = a;
+	sort(ac.begin(), ac.end());
+	set<int> numbers;
+	numbers.insert(a[0]);
+	vector<int> sol;
+	for (int i = 1; i < n; i++) {
+		auto mptr = numbers.end();
+		mptr--;
+		int actual_max = *mptr;
+		if (actual_max > a[i]) {
+			sol.push_back(actual_max);
+			sol.push_back(a[i]);
+			break;
+		} else {
+			if (!numbers.count(a[i])) { numbers.insert(a[i]); }
+		}
+	}
+	if (sol.empty()) {
+		cout << "NO" << endl;
+	} else {
+		cout << "YES" << endl;
+		cout << 2 << endl;
+		cout << sol[0] << " " << sol[1] << endl;
+	}
+}
+
+int32_t main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+	// atcoder::modint::set_mod(998244353);
+	int t;
+	cin >> t;
+	while (t--) solution();
+
+	return 0;
+}
