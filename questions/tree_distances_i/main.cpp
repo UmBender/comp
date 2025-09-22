@@ -15,27 +15,25 @@ int main() {
         cout << "1 1" << endl;
         return 0;
     }
-	if(n == 1) {
-		cout << "0" << endl;
-		return 0;
-	}
-    vector<int> leaf;
+    if (n == 1) {
+        cout << "0" << endl;
+        return 0;
+    }
+
+    queue<int> nodes;
     for (int i = 1; i <= n; i++) {
         if (adj[i].size() == 1) {
-            leaf.push_back(i);
+            nodes.push(i);
         }
     }
     vector<int> dp_sub(n + 1, -1);
     vector<int> dp_ext(n + 1, -1);
-    queue<int> nodes;
-    for (int i = 0; i < leaf.size(); i++) {
-        nodes.push(leaf[i]);
-    }
-    int last = 0;
     vector<int> counter(n + 1);
     for (int i = 1; i <= n; i++) {
         counter[i] = adj[i].size();
     }
+
+    int last = 0;
     while (!nodes.empty()) {
         int actual = nodes.front();
         nodes.pop();
