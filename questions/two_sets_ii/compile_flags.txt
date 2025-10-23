@@ -1,0 +1,14 @@
+-I.
+-std=c++23
+-Og
+-g
+-pedantic
+-Wall
+-Wno-vla
+-I.
+-std=c++23
+-Og
+-g
+-pedantic
+-Wall
+-Wno-vla
