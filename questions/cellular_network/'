@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+using i32 = int32_t;
+using i64 = int64_t;
+using i128 = __int128;
+using VI = vector<i32>;
+using VVI = vector<VI>;
+using PII = pair<i32,i32>;
+using VII = vector<PII>;
+using VVII = vector<VII>;
+
+i32 main() {
+	cin.tie(0)->sync_with_stdio(0);
+	i32 n, m;
+	cin >> n >> m;
+	vector<i32> a(n), b(m);
+	for (i32 i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	for (i32 i = 0; i < m; i++) {
+		cin >> b[i];
+	}
+	i32 left = 0, right = 1e9;
+	i32 radius = 1e9 + 100;
+
+	auto check = [&](i32 rr) -> bool {
+	};
+	while (l <= r) {
+		i32 t = l + (r - l) / 2;
+	}
+
+	return 0;
+}
