@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int, input().split()))
+maxValue = max(a)
+result = sum([maxValue - i for i in a])
+print(result)
